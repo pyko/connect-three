@@ -1,0 +1,84 @@
+<html>
+<head>
+   <title>connect three - a prototype</title>
+   <link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="outer-container">
+   <div id="header">
+      <h1>connect three</h1>
+      <div class="title-subtext">beta prototype</div>
+      <div id="score-outer-container">
+         <div class="score-container">
+            <div class="score-text">score</div>
+            <div class="score-value">0</div>
+         </div>
+         <div class="score-container">
+            <div class="score-text">best score</div>
+            <div class="best-score-value">0</div>
+         </div>
+      </div>
+   </div>
+
+   <div id="game-board">
+      <div id="grid-container">
+         <div class="background-row">
+            <div class="background-tile"></div>
+            <div class="background-tile"></div>
+            <div class="background-tile"></div>
+            <div class="background-tile"></div>
+         </div>   
+
+         <div class="background-row">
+            <div class="background-tile"></div>
+            <div class="background-tile"></div>
+            <div class="background-tile"></div>
+            <div class="background-tile"></div>
+         </div>
+
+         <div class="background-row">
+            <div class="background-tile"></div>
+            <div class="background-tile"></div>
+            <div class="background-tile"></div>
+            <div class="background-tile"></div>
+         </div>
+
+         <div class="background-row">
+            <div class="background-tile"></div>
+            <div class="background-tile"></div>
+            <div class="background-tile"></div>
+            <div class="background-tile"></div>
+         </div>
+      </div>
+      
+      <div id="player-tiles">
+      </div>
+      <div id="game-over" class="hidden">
+         <p>Game over</p>
+         <span id="try-again">Try again</span>
+      </div>
+   </div>
+
+
+   <div id="instructions">
+      <h2>How to play</h2>
+      <p>Use the arrow keys to slide the tiles. Connect three or more same coloured tiles in a vertical or horizontal line to remove tiles from the board.</p>
+      <hr>
+      <p>Works best in Chrome and Safari. Firefox still needs some style wrangling. Not tested in IE.</p>
+      <hr>
+      <p>Created by <a href="https://twitter.com/pyko">pyko</a>, with heavy inspiration from <a href="https://github.com/gabrielecirulli/2048">2048</a>.</p>
+      <p>If you enjoyed the game, a small donation would be much appreciated :)</p>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="hosted_button_id" value="TMQUWDMFMCDDY">
+      <input type="image" alt="PayPal — The safer, easier way to pay online." name="submit" src="https://www.paypalobjects.com/en_AU/i/btn/btn_donateCC_LG.gif">
+      <img alt="" src="https://www.paypalobjects.com/en_AU/i/scr/pixel.gif" width="1" height="1" border="0">
+      </form>
+   </div>
+</div>
+<script type="text/javascript" src="js/game-vars.js"></script>
+<script type="text/javascript" src="js/tile.js"></script>
+<script type="text/javascript" src="js/grid.js"></script>
+<script type="text/javascript" src="js/input_listener.js"></script>
+<script type="text/javascript" src="js/game.js"></script>
+</body>
+</html>

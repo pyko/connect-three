@@ -1,0 +1,196 @@
+/** ------- VARIABLES ------- **/
+$font-stack: 'Helvetica', 'Verdana';
+$tile-gap: 10px;
+$tile-width: 100px;
+$tile-height: 125px;
+
+$black: #333;
+$grey: #a88863; //#a88863; //#B39C7D;
+
+$red: #B83E47;
+$blue: #205B80;
+$green: #9BBF2A;
+$yellow: #F0C419;
+$cyan: #72D6BE;
+$purple: #955BA5;
+
+
+/** ------- MIX-INS ------- **/
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin transition($duration) {
+   -webkit-transition: $duration;
+      -moz-transition: $duration;
+       -ms-transition: $duration;
+        -o-transition: $duration;
+           transition: $duration;
+}
+
+body {
+   font-family: $font-stack;
+   color: $black;
+   padding: 10px;
+   background-color: lighten($green , 50%);
+}
+
+#outer-container {
+   width: 450px;
+   margin: auto;
+}
+
+#header {
+   margin: 10px auto 20px auto;
+   position: relative;
+}
+
+h1, h2, h3, p {
+   margin: 10px 0;
+}
+
+hr {
+   border: 1px solid lighten($green, 30%);
+   margin: 20px 0;
+}
+
+.hidden {
+   display: none;
+}
+
+
+#header .title-subtext {
+   color: $grey;
+}
+
+#score-outer-container {
+   position: absolute;
+   top: 0;
+   right: 0;
+}
+
+.score-container {
+   font-weight: bold;
+   text-align: center;
+   background: lighten($green, 25%);
+   border: 3px solid darken($green, 10%);
+   padding: 5px;
+   @include border-radius(3px);
+   display:inline-block;
+}
+
+#instructions {
+   margin-top: 20px; 
+}
+
+#game-board {
+   height: 550px;
+   margin: auto;
+   @include border-radius(15px);
+   background: $grey;
+   box-sizing: border-box;
+   padding: $tile-gap;
+   position: relative;
+}
+
+#game-over {
+   width: 450px;
+   height: 550px;
+   margin: auto;
+   @include border-radius(15px);
+   box-sizing: border-box;
+   position: absolute;
+   top: 0;
+   left: 0;
+   background: fade-out($grey, 0.25);
+
+   font-size: 70px;
+   font-weight: bold;
+   text-align: center;
+   padding-top: 150px;
+}
+
+#try-again {
+   font-size: 30px;
+   background: $green;
+   padding: 10px;
+   margin: 10px;
+   display: inline-block;
+   @include border-radius(3px);
+}
+
+#try-again:hover {
+   cursor: pointer;
+}
+
+#grid-container {
+   position: absolute;
+}
+
+.background-row:first-child {
+   margin-top: 0;
+}
+
+.background-row {
+   margin-top: $tile-gap;
+   display: inline-block;
+}
+
+.background-tile:first-child {
+   margin-left: 0;
+}
+
+.tile {
+   width: $tile-width;
+   height: $tile-height;
+   @include border-radius(15px);
+   background: lighten($grey, 25%);
+}
+
+.background-tile {
+   @extend .tile;
+   margin-left: $tile-gap;
+   float: left;
+}
+
+.player-tile {
+   @extend .tile;
+   position: absolute;
+   @include transition(0.2s);
+}
+
+@for $x from 0 through 3 {
+   @for $y from 0 through 3 {
+      .pos-#{$x}-#{$y} {
+         left: $tile-gap + ($tile-gap + $tile-width) * $x;
+         top:  $tile-gap + ($tile-gap + $tile-height) * $y;
+      }
+   }
+}
+
+.red  {
+   background: $red;
+}   
+
+.green {
+   background: $green;
+}
+
+.blue {
+   background: $blue;
+}
+
+.yellow {
+   background: $yellow;
+}
+
+.cyan {
+   background: $cyan;
+}
+
+.purple {
+   background: $purple;
+}
