@@ -1,6 +1,6 @@
 connect three
 =============
-After spending too many hours playing [2048](http://gabrielecirulli.github.io/2048/), I decided to spend my weekend creating my own twist of the game.
+After spending too many hours playing [2048](http://gabrielecirulli.github.io/2048/), I decided to [spend my weekend](http://dx3.psychopyko.com/2014/03/30/introducing-connect-three/) creating my own twist of the game.
 
 So, introducing... 'Conenct Three'
 
