@@ -31,6 +31,15 @@ Tile.prototype.remove = function() {
    this.tile.remove();
 }
 
-Tile.randomColour = function() {
-   return CONN_3.colours[Math.floor(Math.random() * CONN_3.colours.length)];
+var Tiles = {
+   colours : ["red", "blue"],
+   addNewColour: function(colour) {
+      this.colours.push(colour);
+   },
+   randomColour: function() {
+      return this.colours[Math.floor(Math.random() * this.colours.length)];
+   },
+   reset: function() {
+      this.colours = ["red", "blue"];
+   }
 }
