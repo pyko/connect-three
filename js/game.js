@@ -1,6 +1,5 @@
 function GameController() {
    this.numStartTiles = 2;
-   this.gridSize = 4;
    this.score = 0;
 
 
@@ -10,7 +9,7 @@ function GameController() {
    this.gameOverOverlay = document.getElementById("game-over");
 
    this.inputListener = new InputListener();
-   this.grid = new Grid(4);
+   this.grid = new Grid(CONN_3.GRID_SIZE);
 
    this.inputListener.on("move", this.move.bind(this));
    this.inputListener.on("restart", this.restart.bind(this));
@@ -46,7 +45,7 @@ GameController.prototype.move = function(direction) {
    var hasMoved = false;
    var rowCheckOrder = [];
    var colCheckOrder = [];
-   for (var i=0; i < this.gridSize; i++) {
+   for (var i=0; i < CONN_3.GRID_SIZE; i++) {
       rowCheckOrder.push(i);
       colCheckOrder.push(i);
    }

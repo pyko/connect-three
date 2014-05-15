@@ -28,7 +28,13 @@ Tile.prototype.getY = function() {
 }
 
 Tile.prototype.remove = function() {
-   this.tile.remove();
+   if (typeof this.tile.remove === "function") {
+      console.log("remove tile");
+      this.tile.remove();   
+   } else {
+      console.log("long way of removing tile");
+      this.tile.parentElement.removeChild(this.tile);
+   }  
 }
 
 var Tiles = {
