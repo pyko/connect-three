@@ -33,7 +33,7 @@ Tile.prototype.remove = function() {
       this.tile.remove();   
    } else {
       console.log("long way of removing tile");
-      this.tile.parentElement.removeChild(this.tile);
+      this.tile.parentElement && this.tile.parentElement.removeChild(this.tile);
    }  
 }
 
