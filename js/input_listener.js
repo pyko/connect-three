@@ -34,7 +34,8 @@ InputListener.prototype.listen = function() {
       var direction = keyMap[e.which];
       if (direction) {
          e.preventDefault();
-         self.emit("move", direction);   
+         self.emit("move", direction);
+         console.log("move: " + direction);
       } 
 
       if (e.which === 82) {
@@ -45,5 +46,33 @@ InputListener.prototype.listen = function() {
    var tryAgain = document.getElementById("try-again");
    tryAgain.addEventListener("click", function(e) {
       self.emit("restart");
+   });
+
+   // Mobile swipes
+   var gameBoard = document.getElementById("game-board");
+   var touchX, touchY;
+   gameBoard.addEventListener("touchmove", function(e){
+      e.preventDefault();
+   });
+
+   gameBoard.addEventListener("touchstart", function(e){
+      touchX = e.targetTouches[0].clientX;
+      touchY = e.targetTouches[0].clientY;
+   });
+
+   gameBoard.addEventListener("touchend", function(e){
+      var deltaX = touchX - e.changedTouches[0].clientX;
+      var deltaY = touchY - e.changedTouches[0].clientY;
+      console.log("deltaX: " + deltaX);
+      console.log("deltaY: " + deltaY);
+      if (deltaY > 30) {
+         self.emit("move", CONN_3.UP); 
+      } else if (deltaY < -30) {
+         self.emit("move", CONN_3.DOWN); 
+      } else if (deltaX > 30) {
+         self.emit("move", CONN_3.LEFT); 
+      } else if (deltaX < -30) {
+         self.emit("move", CONN_3.RIGHT); 
+      } 
    });
 };

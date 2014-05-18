@@ -1,6 +1,5 @@
 function GameController() {
    this.numStartTiles = 2;
-   this.gridSize = 4;
    this.score = 0;
 
 
@@ -10,7 +9,7 @@ function GameController() {
    this.gameOverOverlay = document.getElementById("game-over");
 
    this.inputListener = new InputListener();
-   this.grid = new Grid(4);
+   this.grid = new Grid(CONN_3.GRID_SIZE);
 
    this.inputListener.on("move", this.move.bind(this));
    this.inputListener.on("restart", this.restart.bind(this));
@@ -21,7 +20,7 @@ function GameController() {
 }
 
 GameController.prototype.restart = function() {
-   CONN_3.colours = ["red", "green", "blue"];
+   Tiles.reset();
    this.gameOverOverlay.className = "hidden";
    this.score = 0;
    this.scoreDisplay.textContent = 0;
@@ -31,7 +30,7 @@ GameController.prototype.restart = function() {
 
 GameController.prototype.newGame = function() {   
    for (var i=0; i< this.numStartTiles; i++) {
-      var tile = new Tile(this.grid.randomAvailableSpace(), Tile.randomColour());
+      var tile = new Tile(this.grid.randomAvailableSpace(), Tiles.randomColour());
       this.addTile(tile);   
    }
 };
@@ -46,7 +45,7 @@ GameController.prototype.move = function(direction) {
    var hasMoved = false;
    var rowCheckOrder = [];
    var colCheckOrder = [];
-   for (var i=0; i < this.gridSize; i++) {
+   for (var i=0; i < CONN_3.GRID_SIZE; i++) {
       rowCheckOrder.push(i);
       colCheckOrder.push(i);
    }
@@ -67,7 +66,7 @@ GameController.prototype.move = function(direction) {
 
    if (hasMoved) {      
       setTimeout(function() {
-         var tile = new Tile(self.grid.randomAvailableSideSpace(direction), Tile.randomColour());
+         var tile = new Tile(self.grid.randomAvailableSideSpace(direction), Tiles.randomColour());
          self.addTile(tile);
          self.score += 1;   
       }, 150);
@@ -84,12 +83,14 @@ GameController.prototype.move = function(direction) {
          }
       }, 250);
 
-      if (this.score > 20 && CONN_3.colours.length < 4) {
-         CONN_3.colours.push("yellow");
-      } else if (this.score > 60 && CONN_3.colours.length < 5) {
-         CONN_3.colours.push("purple");
-      } else if (this.score > 120 && CONN_3.colours.length < 6) {
-         CONN_3.colours.push("cyan");
+      if (this.score > 15 && Tiles.colours.length < 3) {
+         Tiles.addNewColour("green");
+      } else if (this.score > 60 && Tiles.colours.length < 4) {
+         Tiles.addNewColour("yellow");
+      } else if (this.score > 130 && Tiles.colours.length < 5) {
+         Tiles.addNewColour("purple");
+      } else if (this.score > 200 && Tiles.colours.length < 6) {
+         Tiles.addNewColour("cyan");
       }
    }
 };

@@ -2,6 +2,7 @@
 <head>
    <title>connect three - a prototype</title>
    <link href="css/style.css" rel="stylesheet" type="text/css" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 </head>
 <body>
 <div id="outer-container">
@@ -21,38 +22,9 @@
    </div>
 
    <div id="game-board">
-      <div id="grid-container">
-         <div class="background-row">
-            <div class="background-tile"></div>
-            <div class="background-tile"></div>
-            <div class="background-tile"></div>
-            <div class="background-tile"></div>
-         </div>   
+      <div id="grid-container"></div>      
+      <div id="player-tiles"></div>
 
-         <div class="background-row">
-            <div class="background-tile"></div>
-            <div class="background-tile"></div>
-            <div class="background-tile"></div>
-            <div class="background-tile"></div>
-         </div>
-
-         <div class="background-row">
-            <div class="background-tile"></div>
-            <div class="background-tile"></div>
-            <div class="background-tile"></div>
-            <div class="background-tile"></div>
-         </div>
-
-         <div class="background-row">
-            <div class="background-tile"></div>
-            <div class="background-tile"></div>
-            <div class="background-tile"></div>
-            <div class="background-tile"></div>
-         </div>
-      </div>
-      
-      <div id="player-tiles">
-      </div>
       <div id="game-over" class="hidden">
          <p>Game over</p>
          <span id="try-again">Try again</span>
@@ -66,8 +38,8 @@
       <hr>
       <p>Works best in Chrome and Safari. Firefox still needs some style wrangling. Not tested in IE.</p>
       <hr>
-      <p>Created by <a href="https://twitter.com/pyko">pyko</a>, with heavy inspiration from <a href="https://github.com/gabrielecirulli/2048">2048</a> which is based off <a href="http://threesgame.com/">Threes</a>.</p>
-      <p>Read <a href="http://dx3.psychopyko.com/2014/03/30/introducing-connect-three/">this blog post</a> for more information about this game.</p>
+      <p>Created by <a href="https://twitter.com/pyko">pyko</a>, with heavy inspiration from <a href="https://github.com/gabrielecirulli/2048">2048</a> which was based off <a href="http://threesgame.com">Threes</a>.</p>
+      <p>Short <a href="http://dx3.psychopyko.com/2014/03/30/introducing-connect-three/">blog post</a> for some background about Connect Three.</p>
       <hr>
       <p>If you enjoyed the game, a small donation would be much appreciated :)</p>
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick">
@@ -77,7 +49,24 @@
       </form>
    </div>
 </div>
+
+  
+
 <script type="text/javascript" src="js/game-vars.js"></script>
+<script type="text/javascript">
+   var gridContainer = document.getElementById("grid-container");
+   for (var i=0; i<CONN_3.GRID_SIZE; i++) {
+      var row = document.createElement("div");
+      row.className = "background-row";
+      for (var j=0; j<CONN_3.GRID_SIZE; j++) {
+         var tile = document.createElement("div");
+         tile.className = "background-tile";
+         row.appendChild(tile);
+      }  
+      gridContainer.appendChild(row); 
+      console.log("added row");
+   }
+</script>
 <script type="text/javascript" src="js/tile.js"></script>
 <script type="text/javascript" src="js/grid.js"></script>
 <script type="text/javascript" src="js/input_listener.js"></script>

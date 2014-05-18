@@ -124,7 +124,7 @@ Grid.prototype.isValidPosition = function(position) {
 Grid.prototype.checkCombos = function() {
    var self = this;
    var points = 0;
-   CONN_3.colours.forEach(function(colour){
+   Tiles.colours.forEach(function(colour){
       var playerTiles = document.getElementsByClassName(colour);
       if (playerTiles.length >= 3) {
          var comboTiles = [];
